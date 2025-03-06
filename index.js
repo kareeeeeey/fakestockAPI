@@ -1,10 +1,14 @@
-import { getStockData } from "./fakestockapi";
+import { getStockData } from "./fakeStockAPI";
 
-setInterval (function() {
-    const stockData = getStockData()
-    renderStockTicker(stockData)
+// setInterval (function() {
+//     const stockData = getStockData()
+//     renderStockTicker(stockData)
 
-},1500)
+// },1500)
+setInterval(async function () {
+  const stockData = await getStockData();
+  renderStockTicker(stockData);
+}, 1500);
 
 let prevPrice = null
 
@@ -17,9 +21,9 @@ function renderStockTicker(stockData) {
 
     const { name, symbol, price, time} = stockData
 
-    stockDisplayName.textContent = name
-    stockDisplaySymbol.textContent = symbol
-    stockDisplayPrice.textContent = price
-    stockDisplayTime.textContent = time
+    stockDisplayName.innerText= name
+    stockDisplaySymbol.innerText = symbol
+    stockDisplayPrice.innerText = price
+    stockDisplayTime.innerText = time
 }
 
